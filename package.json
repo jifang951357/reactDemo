@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack  --mode production& webpack-dev-server --open  --mode production",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --open --mode development",
-    "build": "cross-env NODE_ENV=production webpack --progress --mode production",
+    "build": "cross-env NODE_ENV=production webpack --progress --profile --mode production",
     "storybook": "start-storybook -p 9001 -c storybook"
   },
   "keywords": [],
