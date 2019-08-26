@@ -1,0 +1,37 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/bg.svg);
+  background-repeat: no-repeat;
+  background-position: center 110px;
+  background-size: 100%;
+  background-color: #f0f2f5;
+}
+.loginLayout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 65px);
+  justify-content: center;
+  align-items: center;
+}
+
+.loginLayout :global(.ant-input-group-addon) {
+  padding: 0px;
+}
+
+.loginContainer {
+  width: 350px;
+}
+
+.login-form-forgot {
+  flex: 1;
+  text-align: right;
+}
+
+.registerContainer {
+  width: 600px;
+}

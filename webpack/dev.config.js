@@ -5,6 +5,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const webpackMerge = require("webpack-merge");
+const setProxy = require("./setProxy");
 const PUBLICPATH = "/";
 const PORT = "9090";
 const ENV = process.env.NODE_ENV || "dev";
@@ -43,17 +44,11 @@ module.exports = function(devConfig) {
     devtool: "source-map", // 开发模式设置为原始源代码，方便调试
     devServer: {
       contentBase: path.join(devConfig.ROOTPATH, "./src"),
-      hot: true, //开启热部署块
       port: PORT, //设置访问端口
-      proxy: {
-        // 设置请求代理
-        "/": {
-          bypass: function(req, res, proxyOptions) {
-            console.log("Skipping proxy for browser request.");
-            return `${PUBLICPATH}index.html`;
-          }
-        }
-      }
+      inline: true,
+      watchContentBase: true,
+      historyApiFallback: true,
+      proxy: setProxy
     },
     plugins: []
   });

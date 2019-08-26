@@ -1,23 +1,24 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "build",
+    "outDir": "build", // 输出目录
     "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
+    "target": "es5", // 编译目标平台
+    "lib": ["es7", "es6", "dom"], // 编译过程中需要引入的库文件
+    "sourceMap": true, // 将ts，tsx文件编译成js文件的时候，生成map文件
+    "allowJs": true, // 允许编译js文件
     "jsx": "react",
-    "moduleResolution": "node",
+    "moduleResolution": "node", // 模块解析
     "rootDir": ".",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true, //禁止对同一个文件的不一致的引用。
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
     "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",

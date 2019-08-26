@@ -1,0 +1,7 @@
+.verifiedContent {
+  padding: 20px 0;
+}
+
+.verifiedContent :global(.ant-row) {
+  margin-top: 20px;
+}

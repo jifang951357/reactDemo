@@ -1,18 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Button } from "antd";
+import LayoutContainer from "./main/LayoutContainer";
+import { Provider } from "react-redux";
+import store from "./main/redux/store";
+import { BrowserRouter as Router } from "react-router-dom";
+import history from "./main/redux/history";
 import "antd/dist/antd.css";
-function App() {
-  return (
-    <div>
-      <p>Hello World</p>
-      <Button type="primary" onClick={() => alert("你点击了按钮")}>
-        按钮
-      </Button>
-    </div>
-  );
-}
 
-export default App;
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}>
+      <LayoutContainer />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
+);
