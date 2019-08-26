@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DropTarget, DragSource } from "react-dnd";
 import Internal from "./Internal";
-import { findDOMNode } from "react-dom";
 
 const style = {
   width: "90%",

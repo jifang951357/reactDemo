@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DragSource, DropTarget } from "react-dnd";
 import flow from "lodash.flow";
-import { findDOMNode } from "react-dom";
 
 class Internal extends React.Component {
   public render() {
