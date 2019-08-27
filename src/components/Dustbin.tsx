@@ -10,7 +10,12 @@ const style = {
   lineHeight: "normal"
 };
 
-class Dustbin extends React.Component {
+interface Props {
+  itemList: any;
+  handleDND: Function;
+}
+
+class Dustbin extends React.Component<Props> {
   public render() {
     const { canDrop, isOver, connectDropTarget, itemList } = this.props;
     const isActive = canDrop && isOver;

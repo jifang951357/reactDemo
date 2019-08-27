@@ -11,7 +11,14 @@ const style = {
   float: "left"
 };
 
-class Box extends React.Component {
+interface Props {
+  name: string;
+  index: number;
+  addBox: Function;
+  Html: any;
+}
+
+class Box extends React.Component<Props> {
   // 使用 connectDragSource 包裹住 DOM 节点，使其可以接受各种拖动 API
   // connectDragSource 包裹住的 DOM 节点才可以被拖动
   public render() {

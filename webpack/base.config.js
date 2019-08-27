@@ -25,7 +25,15 @@ module.exports = function(options) {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          use: "ts-loader"
+          exclude: /node_modules/,
+          rules: [
+            {
+              loader: "ts-loader",
+              options: {
+                transpileOnly: true
+              }
+            }
+          ]
         },
         {
           test: /\.(css|scss)/,
@@ -38,8 +46,11 @@ module.exports = function(options) {
         },
         {
           test: /\.(js|jsx)$/,
-          loader: "babel-loader",
-          exclude: /node_modules/
+          loader: "babel-loader?presets[]=react,presets[]=es2015",
+          exclude: /node_modules/,
+          query: {
+            presets: ["react", "es2015"]
+          }
         },
         {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -2,33 +2,28 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build", // 输出目录
-    "module": "esnext",
+    "module": "es2015",
     "target": "es5", // 编译目标平台
-    "lib": ["es7", "es6", "dom"], // 编译过程中需要引入的库文件
+    "lib": ["es6", "dom"], // 编译过程中需要引入的库文件
     "sourceMap": true, // 将ts，tsx文件编译成js文件的时候，生成map文件
     "allowJs": true, // 允许编译js文件
+    "checkJs": true, // 报告.js文件中的错误
     "jsx": "react",
     "moduleResolution": "node", // 模块解析
     "rootDir": ".",
     "forceConsistentCasingInFileNames": true, //禁止对同一个文件的不一致的引用。
-    "noImplicitReturns": true,
+    "noImplicitReturns": false, // 当函数中并非所有代码路径都返回值时报告错误
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    "noImplicitAny": true, // 限制变量必须有类型声明
+    "noUnusedLocals": true, // 忽略未使用的变量报错
     "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "listEmittedFiles": true,
+    "listFiles": true,
+    "diagnostics": true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "config",
-    "mock-server"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", "build", "mock"]
 }

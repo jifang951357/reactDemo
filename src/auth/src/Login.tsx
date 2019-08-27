@@ -1,20 +1,10 @@
 import * as React from "react";
-import {
-  Form,
-  Icon,
-  Input,
-  Button,
-  Checkbox,
-  Typography,
-  message,
-  Tooltip
-} from "antd";
+import { Form, Icon, Input, Button, Typography, message, Tooltip } from "antd";
 import { connect } from "react-redux";
 import { ActionCreators } from "./actions";
 import http from "@sinoui/http";
 import { withRouter } from "react-router-dom";
 import "./css/Login.css";
-import logo from "./images/logo.png";
 const { Title } = Typography;
 
 interface VerficationcodeResult {
@@ -26,7 +16,7 @@ interface State {
   isLoginPage: boolean;
   verficationcodeImgSrc: string;
 }
-class NormalLoginForm extends React.PureComponent<Props, State> {
+class NormalLoginForm extends React.PureComponent<{}, State> {
   private tokenCode = "";
   constructor(props: {}) {
     super(props);
@@ -106,7 +96,7 @@ class NormalLoginForm extends React.PureComponent<Props, State> {
                 alignItems: "center"
               }}
             >
-              <img src={logo} width="40" style={{ marginRight: "10px" }} />
+              <img width="40" style={{ marginRight: "10px" }} />
               xxx
             </Title>
             <p style={{ marginBottom: "40px", color: "rgba(0,0,0,.45)" }}>
