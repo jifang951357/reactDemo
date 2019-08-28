@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { Input, Button, Radio } from "antd";
+import update from "immutability-helper";
 
 import Dustbin from "../../components/Dustbin";
 import Box from "../../components/Box";
@@ -32,6 +33,12 @@ function Demo(props) {
     newitemList.splice(dragIndex, 1); //移除拖拽项
     newitemList.splice(hoverIndex, 0, tmp); //插入放置项
     setItemList(newitemList);
+  };
+
+  const deleteDND = index => {
+    let newitemList = itemList;
+    newitemList.splice(index, 1);
+    setItemList([...newitemList]);
   };
 
   return (
@@ -65,7 +72,11 @@ function Demo(props) {
           />
         </div>
         <div style={{ overflow: "hidden", clear: "both" }}>
-          <Dustbin itemList={itemList} handleDND={handleDND} />
+          <Dustbin
+            itemList={itemList}
+            deleteDND={deleteDND}
+            handleDND={handleDND}
+          />
         </div>
       </div>
     </DndProvider>

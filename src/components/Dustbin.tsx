@@ -7,17 +7,27 @@ const style = {
   margin: "15px",
   textAlign: "center",
   fontSize: "1rem",
-  lineHeight: "normal"
+  lineHeight: "normal",
+  padding: "10px"
 };
 
 interface Props {
   itemList: any;
   handleDND: Function;
+  deleteDND: Function;
 }
 
 class Dustbin extends React.Component<Props> {
   public render() {
-    const { canDrop, isOver, connectDropTarget, itemList } = this.props;
+    const {
+      canDrop,
+      isOver,
+      connectDropTarget,
+      itemList,
+      deleteDND,
+      handleDND
+    } = this.props;
+    console.log(itemList);
     const isActive = canDrop && isOver;
 
     let border = "1px solid #000";
@@ -36,10 +46,13 @@ class Dustbin extends React.Component<Props> {
       connectDropTarget &&
       connectDropTarget(
         <div style={{ ...style, border }}>
-          {isActive ? "Release to drop" : "Drag a box here"}
           {itemList.map((item, index) => {
             return (
-              <Internal index={index} handleDND={this.props.handleDND}>
+              <Internal
+                index={index}
+                handleDND={handleDND}
+                deleteDND={deleteDND}
+              >
                 {item}
               </Internal>
             );
@@ -65,6 +78,14 @@ const boxTarget = {
       monitor.getItem().addBox(monitor.getItem().Html, 0);
     }
     return { name: "Dustbin" };
+  },
+  hover: (props, monitor, component) => {
+    // if (!monitor.isOver({ shallow: true })) {
+    //   if (monitor.getItem().addBox) {
+    //     monitor.getItem().addBox(monitor.getItem().Html, 0);
+    //   }
+    // }
+    // console.log(monitor.didDrop());
   }
 };
 
