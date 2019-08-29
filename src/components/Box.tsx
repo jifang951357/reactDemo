@@ -1,4 +1,5 @@
 import * as React from "react";
+import { findDOMNode } from "react-dom";
 import { DragSource } from "react-dnd";
 
 const style = {
@@ -13,9 +14,9 @@ const style = {
 
 interface Props {
   name: string;
-  index: number;
   addBox: Function;
   Html: any;
+  disable: boolean;
 }
 
 class Box extends React.Component<Props> {
@@ -23,8 +24,13 @@ class Box extends React.Component<Props> {
   // connectDragSource 包裹住的 DOM 节点才可以被拖动
   public render() {
     const { isDragging, connectDragSource } = this.props;
-    const { name } = this.props;
-    const opacity = isDragging ? 0.4 : 1;
+    const { name, disable } = this.props;
+    let opacity;
+    if (!disable) {
+      opacity = isDragging ? 0.4 : 1;
+    } else {
+      opacity = 0.4;
+    }
     return (
       connectDragSource &&
       connectDragSource(<div style={{ ...style, opacity }}>{name}</div>)
@@ -57,6 +63,9 @@ const boxSource = {
       newIndex: -1,
       addBox: props.addBox
     };
+  },
+  canDrag(props, monitor) {
+    return !props.disable;
   }
 };
 

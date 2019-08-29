@@ -81,8 +81,6 @@ const boxTarget = {
       dragIndex = hoverIndex;
     }
 
-    if (dragIndex === props.lastIndex || hoverIndex === props.lastIndex)
-      return null;
     if (dragIndex === hoverIndex) {
       return null;
     }

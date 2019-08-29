@@ -27,7 +27,6 @@ class Dustbin extends React.Component<Props> {
       deleteDND,
       handleDND
     } = this.props;
-    console.log(itemList);
     const isActive = canDrop && isOver;
 
     let border = "1px solid #000";
@@ -70,22 +69,24 @@ const Types = {
 const boxTarget = {
   // 当有对应的 drag source 放在当前组件区域时，会返回一个对象，可以在 monitor.getDropResult() 中获取到
   drop: (props, monitor, component) => {
-    if (monitor.didDrop()) {
-      return;
-    }
-    let dragIndex = monitor.getItem().newIndex; //拖拽目标的Index
-    if (dragIndex === -1) {
-      monitor.getItem().addBox(monitor.getItem().Html, 0);
-    }
+    console.log(monitor.didDrop());
+    // if (monitor.didDrop()) {
+    //   return;
+    // }
+    // let dragIndex = monitor.getItem().newIndex; //拖拽目标的Index
+    // if (dragIndex === -1) {
+    //   monitor.getItem().addBox(monitor.getItem().Html, 0);
+    // }
     return { name: "Dustbin" };
   },
   hover: (props, monitor, component) => {
-    // if (!monitor.isOver({ shallow: true })) {
-    //   if (monitor.getItem().addBox) {
-    //     monitor.getItem().addBox(monitor.getItem().Html, 0);
-    //   }
-    // }
-    // console.log(monitor.didDrop());
+    if (props.itemList.length < 1) {
+      if (!monitor.isOver({ shallow: true })) {
+        if (monitor.getItem().addBox) {
+          monitor.getItem().addBox(monitor.getItem().Html, 0);
+        }
+      }
+    }
   }
 };
 
